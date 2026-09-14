@@ -46,15 +46,17 @@ Rules:
 7. Avoid overly specific intents that apply to only one unusual message.
 8. Return no more than 10 intents.
 9. Keep descriptions short and clear.
-10. approximate_count should be your best estimate of how many messages in this batch belong to each intent.
+
 
 Return ONLY valid JSON.
+Do not use tools or function calls.
 
 Customer messages:
 ${batch.join("\n")}
 `;
       const response = await groq.chat.completions.create({
         model: "openai/gpt-oss-120b",
+        reasoning_effort: "low",
         messages: [
           {
             role: "user",
@@ -80,14 +82,10 @@ ${batch.join("\n")}
               description: {
                 type: "string"
               },
-              approximate_count: {
-                type: "integer"
-              }
             },
             required: [
               "intent_name",
-              "description",
-              "approximate_count"
+              "description"
             ],
             additionalProperties: false
           }
