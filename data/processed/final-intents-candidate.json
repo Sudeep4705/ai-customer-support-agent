@@ -1,0 +1,84 @@
+{
+  "intents": [
+    {
+      "intent_name": "delivery_issue_missing_or_delayed",
+      "description": "Customer reports a package that is late, not delivered, delivered to the wrong address, marked delivered incorrectly, or otherwise missing."
+    },
+    {
+      "intent_name": "delivery_issue_wrong_or_damaged_package",
+      "description": "Customer receives the wrong product, a damaged, broken, or defective item, or a package that was opened or left in poor condition."
+    },
+    {
+      "intent_name": "delivery_fee_dispute",
+      "description": "Customer disputes charged delivery fees, eligibility for free shipping, or unexpected shipping costs."
+    },
+    {
+      "intent_name": "order_placement_error",
+      "description": "Problems placing an order such as address not updating, payment method issues, checkout errors, or needing to cancel/change an order."
+    },
+    {
+      "intent_name": "return_process_issue",
+      "description": "Issues with initiating, scheduling, or completing a return including pickup problems, missing return labels, or self‑return errors."
+    },
+    {
+      "intent_name": "refund_not_received",
+      "description": "Customer has been promised a refund (for a cancelled order, returned item, or other reason) but has not received it yet."
+    },
+    {
+      "intent_name": "refund_wrong_item_or_return_dispute",
+      "description": "Customer received a refund for the wrong item, refund was denied after a return, or there is a dispute over the amount."
+    },
+    {
+      "intent_name": "account_access_issue",
+      "description": "Login problems, password resets, two‑step verification failures, locked or hacked accounts, or inability to use email/phone linked to the account."
+    },
+    {
+      "intent_name": "account_closure_or_reopen",
+      "description": "Requests to permanently close, delete, or reopen an Amazon account."
+    },
+    {
+      "intent_name": "prime_membership_issue",
+      "description": "Questions or complaints about Prime subscription charges, auto‑renewal, cancellation, missing benefits, or refunds for unwanted Prime."
+    },
+    {
+      "intent_name": "device_technical_issue",
+      "description": "Technical problems with Amazon hardware (Echo, Fire TV, Kindle, etc.) or related apps, including warranty disputes."
+    },
+    {
+      "intent_name": "streaming_playback_issue",
+      "description": "Problems playing Prime Video or other streaming content such as buffering, playback errors, missing episodes, or audio issues."
+    },
+    {
+      "intent_name": "counterfeit_or_fake_item_report",
+      "description": "Reports of suspected counterfeit, fake, or unauthentic products sold on Amazon."
+    },
+    {
+      "intent_name": "price_or_discount_dispute",
+      "description": "Customer sees incorrect pricing, false discounts, overcharges, or price changes after purchase."
+    },
+    {
+      "intent_name": "gift_card_or_promotional_credit_issue",
+      "description": "Questions about gift card status, fraud, usage, or promotional credits and rewards not received."
+    },
+    {
+      "intent_name": "fraud_or_scam_report",
+      "description": "Reports of suspicious emails, messages, or scams claiming to be from Amazon."
+    },
+    {
+      "intent_name": "seller_dispute_or_non_response",
+      "description": "Seller not responding, disputes over product quality, returns, refunds, or suspected seller scams."
+    },
+    {
+      "intent_name": "customs_or_kyc_issue",
+      "description": "International orders stuck in customs or requiring KYC verification."
+    },
+    {
+      "intent_name": "wishlist_or_account_setting_issue",
+      "description": "Problems changing wishlists, language/search preferences, or other account settings."
+    },
+    {
+      "intent_name": "contact_customer_service_difficulty",
+      "description": "Difficulty reaching Amazon support, lack of response, request for callbacks, or language barrier with support."
+    }
+  ]
+}
