@@ -8,7 +8,6 @@ let allIntents = [];
 if (fs.existsSync(resultsPath)) {
   const savedResults = fs.readFileSync(resultsPath, "utf8");
   allIntents = JSON.parse(savedResults);
- 
 }
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 const messages = [];
