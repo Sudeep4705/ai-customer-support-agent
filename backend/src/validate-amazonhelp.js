@@ -17,10 +17,8 @@ const seen = new Set();
         missingReply++;
     }
   })
-
   .on("data", (row) => {
   const key = `${row.customer_message}|||${row.amazon_reply}`;
-
   seen.add(key);
 })
   .on("end",()=>{

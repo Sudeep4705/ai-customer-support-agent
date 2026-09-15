@@ -94,6 +94,5 @@ fs.writeFileSync(
   outputPath,
   JSON.stringify(finalTaxonomy, null, 2)
 );
-
 console.log("Final intent candidates saved.");
 
