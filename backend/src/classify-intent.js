@@ -48,6 +48,5 @@ Choose the single intent that best matches the customer's problem.
   }
 },
 });
-
 console.log(response.choices[0].message.content);
 
