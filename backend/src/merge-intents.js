@@ -89,7 +89,6 @@ response_format: {
 const result = response.choices[0].message.content;
 
 const finalTaxonomy = JSON.parse(result);
-
 fs.writeFileSync(
   outputPath,
   JSON.stringify(finalTaxonomy, null, 2)

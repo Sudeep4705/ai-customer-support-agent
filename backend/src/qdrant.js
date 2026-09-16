@@ -6,7 +6,14 @@ const qdrant = new QdrantClient({
   apiKey: process.env.QDRANT_API_KEY,
 });
 
-const collections = await qdrant.getCollections();
 
+await qdrant.createCollection("amazonhelp", {
+  vectors: {
+    size: 1024,
+    distance: "Cosine",
+  },
+});
+
+const collections = await qdrant.getCollections();
 console.log("Connected to Qdrant!");
 console.log(collections);
