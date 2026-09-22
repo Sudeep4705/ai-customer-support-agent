@@ -21,7 +21,6 @@ const response = await voyage.embed({
 });
 
 const queryEmbedding = response.data[0].embedding;
-
 const results = await qdrant.search("amazonhelp", {
   vector: queryEmbedding,
   limit: 1,
