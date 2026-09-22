@@ -31,6 +31,18 @@ const response = await voyage.embed({
 
 const embeddings = response.data;
 
-console.log("Number of embeddings:", embeddings.length);
-console.log("First embedding:", embeddings[0].embedding);
-console.log("Vector dimension:", embeddings[0].embedding.length);
+const points = embeddings.map((result, index) => ({
+  id: index + 1,
+  vector: result.embedding,
+  payload: {
+    intent: allIntents.intents[index].intent,
+    description: allIntents.intents[index].description,
+  },
+}));
+
+await qdrant.upsert("amazonhelp", {
+  wait: true,
+  points,
+});
+
+console.log(`Stored ${points.length} intent embeddings in Qdrant`);
