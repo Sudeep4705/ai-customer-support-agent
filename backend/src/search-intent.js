@@ -18,15 +18,7 @@ async function searchIntent(customerMessage) {
     inputType: "query",
   });
 
-  const customerEmbedding = response.data[0].embedding;
-
-//   // 2. Search Qdrant
-//   const result = await qdrant.search("amazonhelp", {
-//     vector: customerEmbedding,
-//     limit: 1,
-//   });
-
-//   console.log(result);
+const customerEmbedding = response.data[0].embedding;
 const result = await qdrant.search("amazonhelp", {
   vector: customerEmbedding,
   limit: 1,
