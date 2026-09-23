@@ -35,7 +35,7 @@ const points = embeddings.map((result, index) => ({
   id: index + 1,
   vector: result.embedding,
   payload: {
-    intent: allIntents.intents[index].intent,
+    intent: allIntents.intents[index].intent_name,
     description: allIntents.intents[index].description,
   },
 }));
