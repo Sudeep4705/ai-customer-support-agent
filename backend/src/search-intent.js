@@ -11,7 +11,7 @@ const voyage = new VoyageAIClient({
   apiKey: process.env.VOYAGE_API_KEY,
 });
 
-async function searchIntent(customerMessage) {
+export async function searchIntent(customerMessage) {
   const response = await voyage.embed({
     input: [customerMessage],
     model: "voyage-4",
@@ -23,12 +23,6 @@ const result = await qdrant.search("amazonhelp", {
   vector: customerEmbedding,
   limit: 1,
 });
-
 const matchedIntent = result[0].payload.intent;
-
-console.log("Matched intent:", matchedIntent);
-
-
+return  matchedIntent
 }
-
-await searchIntent("My package hasn't arrived yet.")
