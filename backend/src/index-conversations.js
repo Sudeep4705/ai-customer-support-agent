@@ -45,19 +45,9 @@ for (let i = 0; i < customerMessages.length; i += batchSize) {
   }
 const embeddings = response.data;
 
-const points = embeddings.map((result, index) => ({
-  id: i + index + 1,
-  vector: result.embedding,
-  payload: {
-    customer_message: batch[index].customer_message,
-    amazon_reply: batch[index].amazon_reply,
-  },
-}));
 
-await qdrant.upsert("amazon-conversation", {
-  wait: true,
-  points,
-});
+
+
   
 }
   })
