@@ -58,6 +58,5 @@ await qdrant.upsert("amazon-conversation", {
   wait: true,
   points,
 });
-  
 }
   })
