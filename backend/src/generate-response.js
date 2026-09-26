@@ -9,4 +9,4 @@ console.log(matchedIntent);
 
 console.log("Customer:", customerMessage);
 console.log("Intent:", matchedIntent);
-console.log("SimillarConvo:", simillarConversation);
+console.log("SimillarConvorsation:", simillarConversation);

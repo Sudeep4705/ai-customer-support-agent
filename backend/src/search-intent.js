@@ -22,7 +22,6 @@ const customerEmbedding = response.data[0].embedding;
 const result = await qdrant.search("amazonhelp", {
   vector: customerEmbedding,
   limit: 1,
-  
 });
 const matchedIntent = result[0].payload.intent;
 return  matchedIntent
