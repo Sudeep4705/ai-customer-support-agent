@@ -44,6 +44,9 @@ Instructions:
 - Do not copy a historical response blindly. Adapt the response to the current customer's message.
 - Do not invent order details, tracking information, refunds, or other facts that are not provided.
 - Keep the response concise and natural.
+- If the customer's issue cannot be answered reliably using the detected intent and the provided historical conversations, do not guess or invent information.
+- In that case, set should_escalate to true and provide a short message informing the customer that they will be connected to a human support agent.
+- If the intent and historical conversations provide enough information to answer the customer's issue, set should_escalate to false and generate the response.
 `;
 
 const response = await groq.chat.completions.create({
