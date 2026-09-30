@@ -5,8 +5,7 @@ import Groq from "groq-sdk";
 
 
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
-
-const customerMessage = "Where is my package? It should have arrived yesterday.";
+export async function generateRes(customerMessage){
 const matchedIntent = await searchIntent(customerMessage)
 const simillarConversation =  await searchConversation(customerMessage)
 const amazonConvo = simillarConversation.map((obj)=>({
@@ -59,6 +58,7 @@ const response = await groq.chat.completions.create({
           },
         ],
       });
+      return response.choices[0].message.content;
+} 
 
-      console.log(response.choices[0].message.content);
       
