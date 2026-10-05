@@ -3,12 +3,18 @@ import axios from "axios";
 
 export default function Home() {
   const [message, setMessage] = useState("");
+  const [loading,setLoading] = useState(false)
   const handlechange = (e) => {
     setMessage(e.target.value);
   };
   const handlesubmit = async (e) => {
     try {
-      if (e.key === "Enter") {
+      if(message.trim()===""){
+        return
+      }
+      if (e.key === "Enter" && !e.shiftKey){
+        e.preventDefault();
+        setLoading(true)
         const res = await axios.post(
           "http://localhost:8282/api/chat",
           {message},
@@ -16,10 +22,11 @@ export default function Home() {
         );
         console.log(res.data);
         setMessage("");
-        e.preventDefault();
       }
     } catch (error) {
       console.log(error);
+    }finally{
+      setLoading(false)
     }
   };
   return (
@@ -32,6 +39,9 @@ export default function Home() {
           <p className="text-white text-center mt-5 text-md md:text-xl">
             How can i help you?
           </p>
+            {loading && (
+                <p>Fetching....</p>
+              )}
           {/* chat */}
           <div className="chat-sec mt-10 flex flex-col px-3 lg:px-96">
             <textarea
@@ -43,6 +53,8 @@ export default function Home() {
               className="pt-20 pl-4  bg-white outline-0 rounded-2xl resize-none border-2 border-blue-600"
             ></textarea>
           </div>
+     
+            
         </div>
       </div>
     </>
