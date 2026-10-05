@@ -4,7 +4,7 @@ import axios from "axios";
 export default function Home() {
   const [message, setMessage] = useState("");
   const [loading,setLoading] = useState(false)
-  const handlechange = (e) => {
+  const handlechange = (e) =>{
     setMessage(e.target.value);
   };
   const handlesubmit = async (e) => {
@@ -40,7 +40,7 @@ export default function Home() {
             How can i help you?
           </p>
             {loading && (
-                <p>Fetching....</p>
+                <p className="text-white ml-5">Fetching....</p>
               )}
           {/* chat */}
           <div className="chat-sec mt-10 flex flex-col px-3 lg:px-96">
@@ -52,9 +52,7 @@ export default function Home() {
               id="msg"
               className="pt-20 pl-4  bg-white outline-0 rounded-2xl resize-none border-2 border-blue-600"
             ></textarea>
-          </div>
-     
-            
+          </div> 
         </div>
       </div>
     </>
