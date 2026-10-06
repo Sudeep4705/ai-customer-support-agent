@@ -4,6 +4,7 @@ import axios from "axios";
 export default function Home() {
   const [message, setMessage] = useState("");
   const [loading,setLoading] = useState(false)
+  const [response,setResponse] = useState([])
   const handlechange = (e) =>{
     setMessage(e.target.value);
   };
@@ -15,12 +16,13 @@ export default function Home() {
       if (e.key === "Enter" && !e.shiftKey){
         e.preventDefault();
         setLoading(true)
+        setResponse((prev)=>[...prev,{sender:"user",text:message}])
         const res = await axios.post(
           "http://localhost:8282/api/chat",
           {message},
           { withCredentials: true },
         );
-        console.log(res.data);
+        setResponse((prev)=>[...prev,{sender:"Ai",text:res.data}])
         setMessage("");
       }
     } catch (error) {
