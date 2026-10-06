@@ -22,7 +22,7 @@ export default function Home() {
           {message},
           { withCredentials: true },
         );
-        setResponse((prev)=>[...prev,{sender:"Ai",text:res.data}])
+        setResponse((prev)=>[...prev,{sender:"Ai",AiText:res.data}])
         setMessage("");
       }
     } catch (error) {
@@ -43,6 +43,14 @@ export default function Home() {
           </p>
             {loading && (
                 <p className="text-white ml-5">Fetching....</p>
+              )}
+
+              {/* user response and user message  */}
+              {response.map((msg,index)=>
+                <div key={index}>
+                  <p className="text-white">{msg.text}</p>
+                  <p className="text-white">{msg.AiText}</p>
+                </div>
               )}
           {/* chat */}
           <div className="chat-sec mt-10 flex flex-col px-3 lg:px-96">
