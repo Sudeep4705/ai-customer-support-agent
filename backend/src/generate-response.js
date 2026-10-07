@@ -6,8 +6,10 @@ import Groq from "groq-sdk";
 
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 export async function generateRes(customerMessage){
-const matchedIntent = await searchIntent(customerMessage)
-const simillarConversation =  await searchConversation(customerMessage)
+
+const searchResult =  await searchConversation(customerMessage)
+const matchedIntent = searchResult.intent[0].payload.intent
+const simillarConversation = searchResult.conversations
 const amazonConvo = simillarConversation.map((obj)=>({
     customer_message:obj.payload.customer_message,
     amazon_reply:obj.payload.amazon_reply

@@ -2,11 +2,8 @@ import "dotenv/config";
 import fs from "fs";
 import Groq from "groq-sdk";
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
-
 const finalIntentPath = "../data/processed/final-intents.json"
-
 const Intents = fs.readFileSync(finalIntentPath, "utf8");
-
 
 const customerMessage = "My package hasn't arrived yet.";
 const prompt = `
