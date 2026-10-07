@@ -58,7 +58,8 @@ const response = await groq.chat.completions.create({
           },
         ],
       });
-      return response.choices[0].message.content;
+      const result = JSON.parse(response.choices[0].message.content);
+      return result
 } 
 
       
