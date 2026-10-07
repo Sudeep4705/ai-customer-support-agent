@@ -53,10 +53,9 @@ export default function Home() {
   >
     
     {/* The actual chat bubble */}
-    <p className="text-white bg-blue-500 p-3 rounded-2xl max-w-[80%] md:max-w-[50%]">
+    <p className="text-white bg-blue-500 p-3 rounded-2xl max-w-[80%] md:max-w-[50%] break-words">
       {msg.text}
     </p>
-
   </div>
               )}
           {/* chat */}
