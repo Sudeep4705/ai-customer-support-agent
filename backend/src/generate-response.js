@@ -1,6 +1,5 @@
 import "dotenv/config";
-import { searchConversation } from "./search-conversations.js";
-import { searchIntent } from "./search-intent.js";
+import { searchConversation } from "./search-customer.js";
 import Groq from "groq-sdk";
 
 
