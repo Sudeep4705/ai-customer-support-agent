@@ -22,7 +22,7 @@ export default function Home() {
           {message},
           { withCredentials: true },
         );
-        setResponse((prev)=>[...prev,{sender:"Ai",AiText:res.data}])
+        setResponse((prev)=>[...prev,{sender:"Ai",text:res.data}])
         setMessage("");
       }
     } catch (error) {
@@ -47,13 +47,20 @@ export default function Home() {
 
               {/* user response and user message  */}
               {response.map((msg,index)=>
-                <div key={index}>
-                  <p className="text-white">{msg.text}</p>
-                  <p className="text-white">{msg.AiText}</p>
-                </div>
+                  <div 
+    key={index} 
+    className={`w-full flex ${msg.sender === "user" ? "justify-start pl-4 pt-5 md:pl-20 pb-5" : "justify-end pr-5 flex-wrap"}`}
+  >
+    
+    {/* The actual chat bubble */}
+    <p className="text-white bg-blue-500 p-3 rounded-2xl max-w-[80%] md:max-w-[50%]">
+      {msg.text}
+    </p>
+
+  </div>
               )}
           {/* chat */}
-          <div className="chat-sec mt-10 flex flex-col px-3 lg:px-96">
+          <div className="chat-sec mt-15 flex flex-col px-3 lg:px-96">
             <textarea
               onChange={handlechange}
               onKeyDown={handlesubmit}
