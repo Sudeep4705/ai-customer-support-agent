@@ -57,6 +57,26 @@ const response = await groq.chat.completions.create({
             content: prompt,
           },
         ],
+        response_format: {
+    type: "json_schema",
+    json_schema: {
+      name: "customer_support_response",
+      strict: true,
+      schema: {
+        type: "object",
+        properties: {
+          response: {
+            type: "string",
+          },
+          should_escalate: {
+            type: "boolean",
+          },
+        },
+        required: ["response", "should_escalate"],
+        additionalProperties: false,
+      },
+    },
+  }  
       });
       const result = JSON.parse(response.choices[0].message.content);
       return result
