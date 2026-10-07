@@ -42,7 +42,7 @@ export default function Home() {
             How can i help you?
           </p>
             {loading && (
-                <p className="text-white pl-4">Fetching....</p>
+                <p className="text-white pl-20">Fetching....</p>
               )}
 
               {/* user response and user message  */}

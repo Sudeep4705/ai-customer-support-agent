@@ -46,13 +46,6 @@ Instructions:
 - If the customer's issue cannot be answered reliably using the detected intent and the provided historical conversations, do not guess or invent information.
 - In that case, set should_escalate to true and provide a short message informing the customer that they will be connected to a human support agent.
 - If the intent and historical conversations provide enough information to answer the customer's issue, set should_escalate to false and generate the response.
-Generate a clear, helpful, and professional customer-support response.
-
-Return only the response that should be shown to the customer.
-
-Do not return JSON.
-Do not return markdown.
-Do not explain your reasoning.
 `;
 
 const response = await groq.chat.completions.create({

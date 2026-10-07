@@ -19,7 +19,7 @@ export async function searchIntent(customerMessage) {
   });
 
 const customerEmbedding = response.data[0].embedding;
-const result = await qdrant.search("amazonhelp", {
+const result = await qdrant.search("amazonhelp",{
   vector: customerEmbedding,
   limit: 1,
 });
