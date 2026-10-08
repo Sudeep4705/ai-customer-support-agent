@@ -3,74 +3,95 @@ import axios from "axios";
 
 export default function Home() {
   const [message, setMessage] = useState("");
-  const [loading,setLoading] = useState(false)
-  const [response,setResponse] = useState([])
-  const handlechange = (e) =>{
+  const [loading, setLoading] = useState(false);
+  const [response, setResponse] = useState([]);
+
+  const handlechange = (e) => {
     setMessage(e.target.value);
   };
+
   const handlesubmit = async (e) => {
     try {
-      if(message.trim()===""){
-        return
+      if (message.trim() === "") {
+        return;
       }
-      if (e.key === "Enter" && !e.shiftKey){
+      if (e.key === "Enter" && !e.shiftKey) {
         e.preventDefault();
-        setLoading(true)
-        setResponse((prev)=>[...prev,{sender:"user",text:message}])
+        setLoading(true);
+        setResponse((prev) => [...prev, { sender: "user", text: message }]);
         const res = await axios.post(
           "http://localhost:8282/api/chat",
-          {message},
-          { withCredentials: true },
+          { message },
+          { withCredentials: true }
         );
-        setResponse((prev)=>[...prev,{sender:"Ai",text:res.data}])
+        setResponse((prev) => [...prev, { sender: "Ai", text: res.data }]);
         setMessage("");
       }
     } catch (error) {
       console.log(error);
-    }finally{
-      setLoading(false)
+    } finally {
+      setLoading(false);
     }
   };
-  return (
-    <>
-      <div className="w-full h-screen flex justify-center">
-        <div className="headings w-full flex justify-center flex-col">
-          <h1 className="text-xl md:text-3xl text-white text-center mt-6">
-            Customer <span className="text-red-400">Support</span> Agent
-          </h1>
-          <p className="text-white text-center mt-5 text-md md:text-xl">
-            How can i help you?
-          </p>
-            {loading && (
-                <p className="text-white pl-20">Fetching....</p>
-              )}
 
-              {/* user response and user message  */}
-              {response.map((msg,index)=>
-                  <div 
-    key={index} 
-    className={`w-full flex ${msg.sender === "user" ? "justify-start pl-4 pt-5 md:pl-20 pb-5" : "justify-end pr-5 flex-wrap"}`}
-  >
-    
-    {/* The actual chat bubble */}
-    <p className="text-white bg-blue-500 p-3 rounded-2xl max-w-[80%] md:max-w-[50%] break-words">
-      {msg.text}
-    </p>
-  </div>
-              )}
-          {/* chat */}
-          <div className="chat-sec mt-15 flex flex-col px-3 lg:px-96">
-            <textarea
-              onChange={handlechange}
-              onKeyDown={handlesubmit}
-              value={message}
-              name="msg "
-              id="msg"
-              className="pt-20 pl-4  bg-white outline-0 rounded-2xl resize-none border-2 border-blue-600"
-            ></textarea>
-          </div> 
+  return (
+    <div className="flex flex-col min-h-screen bg-gray-900 text-white font-sans">
+      <div className="flex-shrink-0 p-6 text-center border-b border-gray-800 bg-gray-900">
+        <h1 className="text-xl md:text-3xl font-semibold">
+          Customer <span className="text-red-400">Support</span> Agent
+        </h1>
+        <p className="text-gray-400 text-sm md:text-base mt-2">
+          How can I help you?
+        </p>
+      </div>
+
+      {/* Chat Messages */}
+      <div className="flex-1 overflow-y-auto px-4 md:px-32 py-6 space-y-4">
+        {response.map((msg, index) => (
+          <div
+            key={index}
+            className={`flex w-full ${
+              msg.sender === "user" ? "justify-end" : "justify-start"
+            }`}
+          >
+            <div
+              className={`max-w-[85%] md:max-w-[70%] p-3 rounded-2xl break-words shadow-sm ${
+                msg.sender === "user"
+                  ? "bg-blue-600 text-white rounded-tr-none"
+                  : "bg-gray-700 text-gray-100 rounded-tl-none"
+              }`}
+            >
+              <p className="text-sm md:text-base whitespace-pre-wrap">
+                {msg.text}
+              </p>
+            </div>
+          </div>
+        ))}
+
+        {/* Loading*/}
+        {loading && (
+          <div className="flex justify-start w-full">
+            <p className="text-gray-400 text-sm italic ml-2 animate-pulse">
+              Fetching...
+            </p>
+          </div>
+        )}
+      </div>
+
+      {/* Input area */}
+      <div className="flex-shrink-0 p-4 border-t border-gray-800 bg-gray-900">
+        <div className="max-w-4xl mx-auto">
+          <textarea
+            onChange={handlechange}
+            onKeyDown={handlesubmit}
+            value={message}
+            name="msg"
+            id="msg"
+            placeholder="Type your message... (Press Enter to send)"
+            className="w-full bg-gray-800 text-white placeholder-gray-500 outline-none rounded-2xl resize-none border border-gray-700 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 p-4 min-h-[60px] max-h-[150px] transition-all"
+          ></textarea>
         </div>
       </div>
-    </>
+    </div>
   );
 }
