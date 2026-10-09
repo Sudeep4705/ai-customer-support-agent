@@ -6,7 +6,10 @@ import Groq from "groq-sdk";
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 export async function generateRes(customerMessage){
 
-const searchResult =  await searchConversation(customerMessage)
+const searchResult =  await searchConversation(customerMessage);
+if (!searchResult.isRelevant){
+  return "I'm here to help with Amazon customer support questions. Could you tell me what issue you're experiencing with an Amazon order, account, or product?";
+}
 const matchedIntent = searchResult.intent[0].payload.intent
 const simillarConversation = searchResult.conversations
 const amazonConvo = simillarConversation.map((obj)=>({

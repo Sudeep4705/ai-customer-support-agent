@@ -30,7 +30,20 @@ const result2 = await qdrant.search("amazonhelp",{
   vector: customerEmbedding,
   limit: 1,
 });
+// console.log("Matched intent:", result2[0].payload.intent);
+// console.log("Intent score:", result2[0].score);
+
+const bestIntent = result2[0]
+
+if(!bestIntent || bestIntent.score<0.3){
+  return {
+    isRelevant : false,
+    conversations:[],
+    intent:null
+  }
+}
 return {
+  isRelevant:true,
   conversations: result1,
   intent: result2,
 };

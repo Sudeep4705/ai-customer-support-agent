@@ -77,7 +77,6 @@ export default function Home() {
           </div>
         )}
       </div>
-
       {/* Input area */}
       <div className="flex-shrink-0 p-4 border-t border-gray-800 bg-gray-900">
         <div className="max-w-4xl mx-auto">
