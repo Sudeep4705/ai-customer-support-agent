@@ -16,10 +16,6 @@ const amazonConvo = simillarConversation.map((obj)=>({
     customer_message:obj.payload.customer_message,
     amazon_reply:obj.payload.amazon_reply
 }))
-
-// console.log("Customer:", customerMessage);
-// console.log("Intent:", matchedIntent);
-// console.log("SimillarConvorsation:", amazonConvo);
  
  const prompt = `
 You are an Amazon customer support assistant.
