@@ -20,7 +20,7 @@ export default function Home() {
         setLoading(true);
         setResponse((prev) => [...prev, { sender: "user", text: message }]);
         const res = await axios.post(
-          "http://localhost:8282/api/chat",
+          "https://ai-customer-support-agent-dtzc.onrender.com/api/chat",
           { message },
           { withCredentials: true }
         );
