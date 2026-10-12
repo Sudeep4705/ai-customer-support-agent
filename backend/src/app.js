@@ -9,7 +9,7 @@ const app =  express()
 // middlewares 
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
-app.use(cors({origin:"http://localhost:5173",credentials:true}))
+app.use(cors({origin:"https://ai-customer-support-agent-ruddy.vercel.app",credentials:true}))
 
 // route
 app.use("/api",chatRoute)
